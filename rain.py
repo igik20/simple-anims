@@ -6,16 +6,20 @@ class Drop():
     def __init__(self) -> None:
         self.x = random.randint(0,720)
         self.y = 0
-        self.vy = random.uniform(15,25)
-        self.g = random.uniform(0.05, 0.14)
+        self.vy = random.uniform(18,28)
+        self.g = random.uniform(0.08, 0.2)
+        self.rd = random.uniform(140,160)
+        self.gr = random.uniform(55,65)
+        self.bl = random.uniform(140,160)
         self.a = random.choice([50, 100, 150, 200, 255])
+        self.col = pygame.Color( (self.rd,self.gr,self.bl,self.a) )
     
     def __update__(self):
         self.y += self.vy
         self.vy += self.g
 
     def draw(self):
-        pygame.draw.rect(s, (152, 60, 158, self.a), pygame.Rect(self.x, self.y, 3, self.a//10))
+        pygame.draw.rect(s, self.col, pygame.Rect(self.x, self.y, 3, self.a//10))
 
 pygame.init()
 clock = pygame.time.Clock()
