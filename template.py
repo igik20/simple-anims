@@ -10,6 +10,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     # the actual code
+    pygame.display.flip()
     clock.tick(30)
 
 pygame.quit()

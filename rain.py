@@ -1,6 +1,5 @@
 import pygame
 import random
-import gc
 
 class Drop():
     def __init__(self) -> None:
@@ -27,6 +26,7 @@ screen = pygame.display.set_mode( (720, 720) )
 s = pygame.Surface( (720, 720), flags = pygame.SRCALPHA )
 
 drops = []
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -43,7 +43,6 @@ while running:
         drops.append(Drop())
     screen.blit(s, (0,0))
     pygame.display.flip()
-    # the actual code
     clock.tick(30)
 
 pygame.quit()
