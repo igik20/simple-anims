@@ -1,5 +1,4 @@
 import random
-from re import X
 import pygame
 
 class GrowBall():

@@ -1,3 +1,4 @@
+import gc
 import pygame
 import random
 import gc
@@ -11,13 +12,16 @@ class Circle():
         green = random.randint(0,255)
         blue = random.randint(0,255)
         self.color = pygame.Color(red, green, blue, 255)
+        self.dropcolor = pygame.Color(red, green, blue, 255)
 
     def __update__(self):
         self.r += 1
+        self.dropcolor.a = self.dropcolor.a - 2 if self.dropcolor.a > 2 else 0
         if random.random() > 0.5:
             self.color.a = self.color.a - 1 if self.color.a > 0 else 0
 
     def draw(self):
+        pygame.draw.circle(s, self.dropcolor, (self.x, self.y), 5)
         pygame.draw.circle(s, self.color, (self.x, self.y), self.r, 2)
 
 pygame.init()
@@ -39,7 +43,7 @@ while running:
     for circle in circles:
         circle.__update__()
         circle.draw()
-        if circle.color.a == 0:
+        if circle.color.a < 3:
             del circle
             gc.collect()
     screen.blit(s, (0,0))
