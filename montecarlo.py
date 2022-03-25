@@ -64,6 +64,6 @@ while running:
     caption5 = font2.render("PI", True, (150, 150, 150))
     screen.blit(caption5, (2, 813))
     pygame.display.flip()
-    clock.tick(10)
+    clock.tick(100)
 
 pygame.quit()
