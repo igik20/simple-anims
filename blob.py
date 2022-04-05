@@ -5,7 +5,7 @@ pygame.init()
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode( (720, 720) )
 
-layers = [pygame.Surface((720, 720), pygame.SRCALPHA) for _ in range(2)]
+layers = [pygame.Surface((720, 720), pygame.SRCALPHA) for _ in range(1)]
 
 BGCOLOR = (240, 233, 233, 255)
 BLOBCOLORS = ( pygame.Color((193, 145, 145, 60)), pygame.Color((170, 112, 112, 130)), pygame.Color((139, 93, 93, 240)) )
@@ -27,7 +27,7 @@ while running:
     # generating the blobs
     coords = []
     for i, layer in enumerate(layers):
-        for angle in range(360):
+        for angle in range(1,360):
             coord = pygame.Vector2()
             n1 = pnoise1(angle / 36 + 0.1)
             n2 = pnoise1(angle / 120 + frame_count / 100 + i)
@@ -38,7 +38,7 @@ while running:
         screen.blit(layer, (0, 0), special_flags = pygame.BLEND_ALPHA_SDL2)
     
     pygame.display.flip()
-    # frame_count += 1
+    frame_count += 1
     clock.tick(30)
 
 pygame.quit()
